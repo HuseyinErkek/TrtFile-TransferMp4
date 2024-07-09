@@ -7,15 +7,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ContentController {
     //URL'de home ekini girip yakalar.
     @GetMapping("/home")
-    public String handleHome() {
+    public String handleWelcome() {
         return "home";
     }
+
     @GetMapping("/admin/home")
-    public String handleAdminHome(){
+    public String handleAdminHome() {
         return "home_admin";
     }
-    @GetMapping("/admin/user")
-    public String handleHomeUser(){
+
+    @GetMapping("/user/home")
+    public String handleUserHome() {
         return "home_user";
     }
+    /*
+    @GetMapping("/login")
+    public String handleLogin() {
+        return "custom_login";
+    }*/
 }

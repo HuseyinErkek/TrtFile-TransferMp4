@@ -32,7 +32,7 @@ public class SecurityConfiguration {
                     ;})
                 .build();
     }
-    //Kullanci kimlikleriyla alakali birkac
+    //Kullanci kimlikleriyla olusturma ve hafizaya kaydetme.
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails normalUser= User.builder()
@@ -47,6 +47,7 @@ public class SecurityConfiguration {
                 .build();
         return new InMemoryUserDetailsManager(normalUser,adminUser);
     }
+    //Girilen sifreyi encode edip normal hale getirme kismi.
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
