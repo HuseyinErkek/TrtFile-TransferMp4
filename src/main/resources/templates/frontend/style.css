@@ -1,3 +1,5 @@
+/* Mevcut CSS dosyası (style.css) */
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f4f4f4;
@@ -80,6 +82,10 @@ input::placeholder {
     font-size: 14px;
 }
 
+.button-container {
+    text-align: center; /* Butonların ortalanması */
+}
+
 button, .register-button {
     background-color: #eb0028;
     color: #fff;
@@ -114,4 +120,31 @@ button:hover, .register-button:hover {
 
 .footer p {
     margin: 0;
+}
+
+/* Yeni eklenen form alanları için özel stiller */
+
+#unit,
+#unit-title,
+#folder,
+#username {
+    width: calc(100% - 20px); /* Alanın genişliği, iç kenar boşluğu ile hesaplanıyor */
+    padding: 8px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+@media screen and (max-width: 480px) {
+    form {
+        padding: 10px;
+    }
+
+    form button {
+        width: 100%; /* Butonların genişliği, ekrana tam sığacak şekilde ayarlanıyor */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 }

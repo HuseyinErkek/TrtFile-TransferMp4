@@ -2,32 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Kayıt Ol Sayfası</title>
+    <title>TRT</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="register-container">
-    <div class="logo-container">
-        <a href="login.html">
-            <img src="img/trt.png" alt="Logo" class="logo">
-        </a>
-        <h2>Hesabı'na Kaydol</h2>
+<div class="login-container">
+    <div class="logo-container" onclick="window.location.href = 'login.html';">
+        <img src="img/trt.png" alt="Logo" class="logo">
+        <h2>Kayıt Talep Et</h2>
     </div>
-    <form action="/register" method="post">
+    <form action="/login" method="post">
         <label for="username">Kullanıcı Adı:</label>
-        <input type="text" id="username" name="username" placeholder="Adınız Soyadınız" required>
-        <label for="email">E-posta Adresi:</label>
-        <input type="email" id="email" name="email" placeholder="E-posta adresiniz" required>
-        <label for="password">Şifre:</label>
-        <input type="password" id="password" name="password" placeholder="Şifreniz" required>
-       <div class="buton-container">
-           <button type="submit">Kayıt Ol</button>
-           <a href="login.html"><button type="button">Oturum Aç</button></a>
-       </div>
+        <input type="text" id="username" name="username" placeholder="Kullanıcı adını giriniz." required>
+        <label for="unit">Birim</label>
+        <select id="unit" name="unit" required>
+            <option value="" disabled selected>Birim seçiniz</option>
+            <option value="haber_kanal_kordinatorlugu">Haber Kanal Kordinatorlugu</option>
+            <option value="spor_kanal_kordinatorlugu">Spor Kanal Kordinatorlugu</option>
+            <option value="avaz_kanal_kordinatorlugu">Avaz Kanal Kordinatorlugu</option>
+        </select><label for="unit">Birim Ünvanı:</label>
 
+        <select id="unit-title" name="unit" required>
+            <option value="" disabled selected>Birim ünvanını seçiniz</option>
+            <option value="admin">Admin</option>
+            <option value="muhabir">Muhabir</option>
+            <option value="editor">Editor</option>
+        </select>
+        <label for="folder">Klasör:</label>
+        <select id="folder" name="folder" required>
+            <option value="" disabled selected>Erişmek istediğiniz klasörü seçiniz</option>
+            <option value="TRT Haber">TRT Haber</option>
+            <option value="TRT Spor">TRT Spor</option>
+            <option value="TRT WORLD">TRT WORLD</option>
+            <option value="TRT KURDİ">TRT KURDİ</option>
+        </select>
+        <div class="button-container">
+            <button type="submit">Kayıt Talep</button>
+            <button type="button" onclick="location.href='login.html';">Oturum Aç</button>
+        </div>
     </form>
 </div>
+
 <div class="footer">
     <p>İletişim: 1234567890 | Email: info@trt.com</p>
 </div>
