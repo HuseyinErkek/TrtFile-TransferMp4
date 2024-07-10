@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="img/trt.png">
+  <title>TRT</title>
+  <link rel="stylesheet" href="usercss.css">
+</head>
+<body>
+<header class="header">
+  <img src="img/trt-logo-w.png" alt="TRT Logo" class="logo">
+  <div class="user-info">
+    <p><strong>Kullanıcı Adı:</strong> <span id="usernameDisplay"></span></p>
+    <p><strong>Kullanıcı Kimlik No:</strong> <span id="nameDisplay"></span></p>
+  </div>
+  <nav class="menu">
+    <ul>
+      <li><a href="#">Klasörler</a></li>
+      <li><a href="#">Erişim Talep</a></li>
+      <li><a href="#">Çıkış<img src="img/power-off.png" alt="Logo" class="logout-logo"></a></li></ul>
+  </nav>
+
+</header>
+
+<div class="content">
+  <section class="file-upload">
+    <h2>Dosya Gönderme</h2>
+    <div class="form-group">
+      <label for="folder">Klasör Seç:</label>
+      <select id="folder">
+        <option value="klasor1">Klasör 1</option>
+        <option value="klasor2">Klasör 2</option>
+        <option value="klasor3">Klasör 3</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="file">Dosya Seç:</label>
+      <input type="file" id="file" name="file" accept=".pdf">
+    </div>
+    <div class="form-group">
+      <button type="button" onclick="sendFile()">Dosyayı Gönder</button>
+    </div>
+  </section>
+</div>
+
+<div class="footer">
+  <p>İletişim: 1234567890 | Email: info@trt.com</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
