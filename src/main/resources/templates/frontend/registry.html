@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Kayıt Ol Sayfası</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-$END$
+<div class="register-container">
+    <div class="logo-container">
+        <a href="login.html">
+            <img src="img/trt.png" alt="Logo" class="logo">
+        </a>
+        <h2>Hesabı'na Kaydol</h2>
+    </div>
+    <form action="/register" method="post">
+        <label for="username">Kullanıcı Adı:</label>
+        <input type="text" id="username" name="username" placeholder="Adınız Soyadınız" required>
+        <label for="email">E-posta Adresi:</label>
+        <input type="email" id="email" name="email" placeholder="E-posta adresiniz" required>
+        <label for="password">Şifre:</label>
+        <input type="password" id="password" name="password" placeholder="Şifreniz" required>
+       <div class="buton-container">
+           <button type="submit">Kayıt Ol</button>
+           <a href="login.html"><button type="button">Oturum Aç</button></a>
+       </div>
+
+    </form>
+</div>
+<div class="footer">
+    <p>İletişim: 1234567890 | Email: info@trt.com</p>
+</div>
+
 </body>
 </html>

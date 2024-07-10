@@ -6,20 +6,27 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-</head>
 <body>
 <div class="login-container">
     <div class="logo-container">
         <img src="img/trt.png" alt="Logo" class="logo">
-        <h2>Hesabı'na Giriş Yap</h2>
+        <h2>Hesabına Giriş Yap</h2>
     </div>
     <form action="/login" method="post">
         <label for="username">Kullanıcı Adı:</label>
         <input type="text" id="username" name="username" placeholder="Kullanıcı adını giriniz." required>
         <label for="password">Şifre:</label>
         <input type="password" id="password" name="password" placeholder="Şifrenizi giriniz." required>
-        <button type="submit">Giriş Yap</button>
+        <div class="button-container">
+            <button type="submit">Giriş Yap</button>
+            <button type="button" onclick="location.href='registry.html';">Kayıt Ol</button>
+        </div>
     </form>
 </div>
+
+<div class="footer">
+    <p>İletişim: 1234567890 | Email: info@trt.com</p>
+</div>
+
 </body>
 </html>
