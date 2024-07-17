@@ -8,17 +8,17 @@ public class ContentController {
     //URL'de home ekini girip yakalar.
     @GetMapping("/home")
     public String handleWelcome() {
-        return "home";
+        return "login";
     }
 
-    @GetMapping("/admin/home")
+    @GetMapping("/admin/login")
     public String handleAdminHome() {
-        return "home_admin";
+        return "user_admin";
     }
 
     @GetMapping("/user/home")
     public String handleUserHome() {
-        return "home_user";
+        return "registry";
     }
     /*
     @GetMapping("/login")

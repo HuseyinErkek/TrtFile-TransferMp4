@@ -1,7 +1,7 @@
 package com.Trt.file_transferMp4.Controller;
 
 import ch.qos.logback.core.model.Model;
-import com.Trt.file_transferMp4.model.FileUploadLog;
+import com.Trt.file_transferMp4.Entity.FileUploadLog;
 import com.Trt.file_transferMp4.service.FileUploadLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,5 +23,7 @@ public class AdminController {
         model.addText("logs");
         return "logView";
     }
+
+
 }
 

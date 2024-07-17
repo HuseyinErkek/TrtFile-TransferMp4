@@ -1,6 +1,6 @@
 package com.Trt.file_transferMp4.service;
 
-import com.Trt.file_transferMp4.model.User;
+import com.Trt.file_transferMp4.Entity.User;
 import com.Trt.file_transferMp4.repository.RoleRepository;
 import com.Trt.file_transferMp4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

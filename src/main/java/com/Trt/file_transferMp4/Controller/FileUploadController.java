@@ -2,8 +2,8 @@ package com.Trt.file_transferMp4.Controller;
 
 
 import ch.qos.logback.core.model.Model;
-import com.Trt.file_transferMp4.model.FileUploadLog;
-import com.Trt.file_transferMp4.model.User;
+import com.Trt.file_transferMp4.Entity.FileUploadLog;
+import com.Trt.file_transferMp4.Entity.User;
 import com.Trt.file_transferMp4.service.FileUploadLogService;
 import com.Trt.file_transferMp4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +42,8 @@ import java.time.LocalDateTime;
             // Dosya yükleme işlemini gerçekleştir
             FileUploadLog log = new FileUploadLog();
             log.setFileName(file.getOriginalFilename());
-            log.setUploadTime(LocalDateTime.now());
-            log.setUser(user);
+            //log.setUploadTime(LocalDateTime.now());
+            //log.setUser(user);
 
             fileUploadLogService.saveLog(log);
 
