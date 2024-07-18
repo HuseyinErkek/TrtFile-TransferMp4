@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sunucu_erisim_talep_istek")
@@ -18,7 +19,7 @@ import java.io.Serializable;
 public class AccessRequest implements Serializable {
 
     @Id
-    @SequenceGenerator(name ="erisim")
+    @SequenceGenerator(name ="erisim" ,allocationSize = 1)
     @GeneratedValue(generator = "erisim", strategy = GenerationType.SEQUENCE)
     private Long id;
 
@@ -33,6 +34,9 @@ public class AccessRequest implements Serializable {
 
     @Column(nullable = false,unique = true,columnDefinition = "TEXT NOT NULL")
     private String serverName;
+
+    @Column
+    private LocalDateTime requestTime;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

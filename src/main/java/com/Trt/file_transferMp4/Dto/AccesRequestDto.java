@@ -5,8 +5,6 @@ import lombok.Data;
 @Data
 public class AccesRequestDto {
 
-    private Long id;
-
     private String userName;
 
     private String unit;
