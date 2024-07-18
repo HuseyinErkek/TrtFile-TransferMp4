@@ -31,12 +31,4 @@ public class UserController {
         return "request-access";
     }
 
-    @PostMapping("/request-access")
-    public String requestAccess(@RequestParam("serverId") Long serverId, Principal principal) {
-        String username = principal.getName();
-        AccessRequest request = new AccessRequest();
-        request.setUsername(username);
-        accessRequestRepository.save(request);
-        return "redirect:/request-access?success";
-    }
 }

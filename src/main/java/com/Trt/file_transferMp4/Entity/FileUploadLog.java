@@ -30,7 +30,7 @@ public class FileUploadLog implements Serializable {
     @Column(nullable = false)
     private String fileName;
 
-    @Column(nullable = false)
+    @Column
     private LocalDateTime transferTime;
 
     @Column(nullable = false)

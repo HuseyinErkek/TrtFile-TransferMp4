@@ -20,6 +20,6 @@ public class UserDto {
 
     private LocalDateTime acces_time;
 
-    private List<RoleDto> role;
+    private List<String> role;
 
 }
