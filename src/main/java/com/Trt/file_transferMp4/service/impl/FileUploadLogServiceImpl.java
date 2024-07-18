@@ -1,4 +1,4 @@
-package com.Trt.file_transferMp4.service;
+package com.Trt.file_transferMp4.service.impl;
 
 import com.Trt.file_transferMp4.Entity.FileUploadLog;
 import com.Trt.file_transferMp4.Entity.User;
