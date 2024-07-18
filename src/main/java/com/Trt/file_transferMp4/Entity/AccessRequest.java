@@ -34,6 +34,11 @@ public class AccessRequest implements Serializable {
     @Column(nullable = false,unique = true,columnDefinition = "TEXT NOT NULL")
     private String address;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+
 
 
 }

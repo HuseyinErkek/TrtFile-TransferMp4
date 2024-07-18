@@ -37,7 +37,7 @@ public class FileUploadLog implements Serializable {
     private String filePath;
 
     @ManyToOne
-    @JoinColumn(name = "user", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
 

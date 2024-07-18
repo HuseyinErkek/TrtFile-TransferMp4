@@ -29,6 +29,10 @@ public class ServerAccess implements Serializable {
     @Column(nullable = false)
     private String username;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     @Column(nullable = false)
     private boolean approved;
 

@@ -46,6 +46,11 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<FileUploadLog> fileUploadLogs;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<AccessRequest> accessRequests;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<ServerAccess> serverAccessList;
 
 
     }
