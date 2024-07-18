@@ -19,7 +19,8 @@ public class FileUploadLogService {
     }
 
     public List<FileUploadLog> findLogsByUser(User user) {
-        return fileUploadLogRepository.findByUser(user);
+        return null;
+        //return fileUploadLogRepository.findByUser(user);
     }
 
     public List<FileUploadLog> findAllLogs() {

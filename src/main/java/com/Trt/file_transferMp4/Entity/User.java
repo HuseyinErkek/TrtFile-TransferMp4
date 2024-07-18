@@ -28,6 +28,7 @@ public class User implements Serializable {
     @GeneratedValue(generator = "ad",strategy = GenerationType.SEQUENCE)
     private Long id;
 
+
     @Column(unique = true, nullable = false)
     private String username;
 
@@ -36,6 +37,11 @@ public class User implements Serializable {
 
     @Column
     private LocalDateTime acces_time;
+
+
+    @OneToMany
+    @JoinColumn(name = "role_durumu")
+    private List<Role> role;
 
 
 

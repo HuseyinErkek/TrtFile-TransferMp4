@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ServerAccessRepository extends JpaRepository<ServerAccess, Long> {
-    List<ServerAccess> findByUsername(String username);
+    //List<ServerAccess> findByUsername(String username);
 }
 

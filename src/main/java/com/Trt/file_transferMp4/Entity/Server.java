@@ -30,5 +30,4 @@ public class Server implements Serializable {
     private String address;
 
 
-
 }

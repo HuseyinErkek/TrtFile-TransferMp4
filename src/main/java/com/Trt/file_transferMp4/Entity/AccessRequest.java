@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "sunucu_erisim")
+@Table(name = "sunucu_erisim_talep_istek")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -31,11 +31,8 @@ public class AccessRequest implements Serializable {
     @Column(nullable = false)
     private String unit_title;
 
-    @Column(nullable = false,unique = true)
-    private Long serverId;
-
-    @Column(nullable = false)
-    private boolean approved;
+    @Column(nullable = false,unique = true,columnDefinition = "TEXT NOT NULL")
+    private String address;
 
 
 

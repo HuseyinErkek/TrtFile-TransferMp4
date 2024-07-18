@@ -9,15 +9,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
+import java.io.Serializable;
 
 
 @Entity
-@Table(name = "sunucu_erisim_izileri")
+@Table(name = "sunucu_erisim_izinleri")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class ServerAccess {
+public class ServerAccess implements Serializable {
 
     @jakarta.persistence.Id
     @Id
@@ -27,12 +28,6 @@ public class ServerAccess {
 
     @Column(nullable = false)
     private String username;
-
-    @Column(nullable = false)
-    private Long serverId;
-
-    @Column(nullable = false)
-    private String serverIp;
 
     @Column(nullable = false)
     private boolean approved;

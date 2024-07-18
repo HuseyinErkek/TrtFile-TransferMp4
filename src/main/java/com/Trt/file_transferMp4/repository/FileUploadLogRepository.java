@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface FileUploadLogRepository extends JpaRepository<FileUploadLog, Long> {
-    List<FileUploadLog> findByUser(User user);
+    //List<FileUploadLog> findByUser(User user);
 }

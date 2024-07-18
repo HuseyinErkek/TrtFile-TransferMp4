@@ -11,13 +11,13 @@ import java.io.Serializable;
 
 
 @Entity
-@Table
+@Table(name = "rolee")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
-    public class Rolee implements Serializable {
+    public class Role implements Serializable {
 
     @Id
     @SequenceGenerator(name ="role" )
@@ -27,8 +27,11 @@ import java.io.Serializable;
     @Column(nullable = false)
     private String username;
 
-    @Column(nullable = false)
-    private String role;
+
+    @ManyToOne
+    @JoinColumn(name= "role_durumu")
+    private User user;
+
 
 
 

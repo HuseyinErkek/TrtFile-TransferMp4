@@ -22,6 +22,8 @@ public class FileUploadLog implements Serializable {
     @GeneratedValue(generator ="log",strategy = GenerationType.SEQUENCE)
     private Long id;
 
+
+
     @Column(nullable = false)
     private String username;
 
