@@ -1,13 +1,14 @@
-package com.Trt.file_transferMp4.service;
+package com.Trt.file_transferMp4.service.impl;
 
 import com.Trt.file_transferMp4.Entity.User;
 import com.Trt.file_transferMp4.repository.RoleRepository;
 import com.Trt.file_transferMp4.repository.UserRepository;
+import com.Trt.file_transferMp4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;

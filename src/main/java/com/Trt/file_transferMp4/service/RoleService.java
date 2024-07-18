@@ -1,2 +1,4 @@
-package com.Trt.file_transferMp4.service;public class RoleService {
+package com.Trt.file_transferMp4.service;
+
+public interface RoleService {
 }

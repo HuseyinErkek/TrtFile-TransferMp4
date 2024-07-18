@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FileUploadLogService {
+public class FileUploadLogServiceImpl implements com.Trt.file_transferMp4.service.FileUploadLog {
 
     @Autowired
     private FileUploadLogRepository fileUploadLogRepository;
