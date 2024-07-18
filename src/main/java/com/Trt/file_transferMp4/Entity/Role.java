@@ -25,7 +25,7 @@ import java.io.Serializable;
     private Long id;
 
     @Column(nullable = false)
-    private String username;
+    private String rolename;
 
 
     @ManyToOne

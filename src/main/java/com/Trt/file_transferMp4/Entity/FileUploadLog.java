@@ -25,7 +25,7 @@ public class FileUploadLog implements Serializable {
 
 
     @Column(nullable = false)
-    private String username;
+    private String userName;
 
     @Column(nullable = false)
     private String fileName;

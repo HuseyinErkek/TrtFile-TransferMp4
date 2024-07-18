@@ -4,8 +4,8 @@ package com.Trt.file_transferMp4.Controller;
 import ch.qos.logback.core.model.Model;
 import com.Trt.file_transferMp4.Entity.FileUploadLog;
 import com.Trt.file_transferMp4.Entity.User;
-import com.Trt.file_transferMp4.service.FileUploadLogService;
-import com.Trt.file_transferMp4.service.UserService;
+import com.Trt.file_transferMp4.service.impl.FileUploadLogServiceImpl;
+import com.Trt.file_transferMp4.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,16 +16,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.time.LocalDateTime;
 
 @Controller
     public class FileUploadController {
 
         @Autowired
-        private FileUploadLogService fileUploadLogService;
+        private FileUploadLogServiceImpl fileUploadLogService;
 
         @Autowired
-        private UserService userService;
+        private UserServiceImpl userService;
 
         @GetMapping("/upload")
         public String listUploadedFiles(Model model) throws IOException {

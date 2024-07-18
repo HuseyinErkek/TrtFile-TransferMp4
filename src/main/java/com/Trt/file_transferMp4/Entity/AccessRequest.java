@@ -23,16 +23,16 @@ public class AccessRequest implements Serializable {
     private Long id;
 
     @Column(nullable = false,unique = true)
-    private String username;
+    private String userName;
 
     @Column(nullable = false)
     private String unit;
 
     @Column(nullable = false)
-    private String unit_title;
+    private String unitTitle;
 
     @Column(nullable = false,unique = true,columnDefinition = "TEXT NOT NULL")
-    private String address;
+    private String serverName;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

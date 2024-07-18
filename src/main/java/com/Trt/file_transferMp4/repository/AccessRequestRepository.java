@@ -8,5 +8,5 @@ import java.util.List;
 public interface AccessRequestRepository extends JpaRepository<AccessRequest, Long> {
     //List<AccessRequest> findByUserId(Long userId);
 
-    AccessRequest findByUsername(String username);
+   // AccessRequest findByUsername(String username);
 }
