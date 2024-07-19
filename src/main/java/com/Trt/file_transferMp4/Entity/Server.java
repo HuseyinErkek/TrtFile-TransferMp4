@@ -19,7 +19,7 @@ public class Server implements Serializable {
 
 
     @Id
-    @SequenceGenerator(name = "sunucu_bilgileri")
+    @SequenceGenerator(name = "sunucu_bilgileri",allocationSize = 1,initialValue = 1)
     @GeneratedValue(generator ="sunucu_bilgileri",strategy = GenerationType.SEQUENCE)
     private Long id;
 

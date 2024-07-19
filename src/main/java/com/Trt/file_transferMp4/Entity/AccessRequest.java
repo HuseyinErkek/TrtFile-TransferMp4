@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 public class AccessRequest implements Serializable {
 
     @Id
-    @SequenceGenerator(name ="erisim" ,allocationSize = 1)
+    @SequenceGenerator(name ="erisim" ,allocationSize = 1,initialValue = 1)
     @GeneratedValue(generator = "erisim", strategy = GenerationType.SEQUENCE)
     private Long id;
 

@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Setter
 public class FileUploadLog implements Serializable {
     @Id
-    @SequenceGenerator(name="log")
+    @SequenceGenerator(name="log",allocationSize=1,initialValue=1)
     @GeneratedValue(generator ="log",strategy = GenerationType.SEQUENCE)
     private Long id;
 

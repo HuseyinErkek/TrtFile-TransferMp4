@@ -22,7 +22,7 @@ public class User implements Serializable {
 
 
     @Id
-    @SequenceGenerator(name = "ad")
+    @SequenceGenerator(name = "ad",allocationSize = 1,initialValue = 1)
     @GeneratedValue(generator = "ad",strategy = GenerationType.SEQUENCE)
     private Long id;
 
