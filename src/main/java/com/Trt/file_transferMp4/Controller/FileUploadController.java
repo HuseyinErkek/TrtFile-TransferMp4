@@ -31,25 +31,25 @@ import java.security.Principal;
             return "uploadForm";
         }
 
-        @PostMapping("/upload")
-        public String handleFileUpload(@RequestParam("file") MultipartFile file,
-                                       RedirectAttributes redirectAttributes,
-                                       Principal principal) {
-            String username = principal.getName();
-            User user = userService.findByUsername(username);
-
-            // Dosya yükleme işlemini gerçekleştir
-            FileUploadLog log = new FileUploadLog();
-            log.setFileName(file.getOriginalFilename());
-            //log.setUploadTime(LocalDateTime.now());
-            //log.setUser(user);
-
-            fileUploadLogService.saveLog(log);
-
-            redirectAttributes.addFlashAttribute("message",
-                    "You successfully uploaded " + file.getOriginalFilename() + "!");
-
-            return "redirect:/upload";
-        }
+//        @PostMapping("/upload")
+//        public String handleFileUpload(@RequestParam("file") MultipartFile file,
+//                                       RedirectAttributes redirectAttributes,
+//                                       Principal principal) {
+//            String username = principal.getName();
+//            User user = userService.findByUsername(username);
+//
+//            // Dosya yükleme işlemini gerçekleştir
+//            FileUploadLog log = new FileUploadLog();
+//            log.setFileName(file.getOriginalFilename());
+//            //log.setUploadTime(LocalDateTime.now());
+//            //log.setUser(user);
+//
+//            fileUploadLogService.saveLog(log);
+//
+//            redirectAttributes.addFlashAttribute("message",
+//                    "You successfully uploaded " + file.getOriginalFilename() + "!");
+//
+//            return "redirect:/upload";
+//        }
     }
 

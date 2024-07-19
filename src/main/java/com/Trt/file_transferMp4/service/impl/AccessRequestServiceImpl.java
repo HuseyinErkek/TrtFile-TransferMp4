@@ -36,7 +36,9 @@ public class AccessRequestServiceImpl implements AccessRequestService {
     }
 
     @Override
+    @Transactional
     public List<AccesRequestDto> getAllAccessRequests() {
+        //Model mapper kullanimi
         List<AccessRequest> accessRequests = accessRequestRepository.findAll();
         return accessRequests.stream()
                 .map(accessRequest -> modelMapper.map(accessRequest, AccesRequestDto.class))

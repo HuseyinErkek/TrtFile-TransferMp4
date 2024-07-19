@@ -1,4 +1,13 @@
 package com.Trt.file_transferMp4.service;
 
-public interface FileUploadLog {
+import com.Trt.file_transferMp4.Dto.FileUploadLogDto;
+import com.Trt.file_transferMp4.Entity.User;
+
+import java.util.List;
+
+public interface FileUploadLogService {
+    void saveLog(FileUploadLogDto logDto);
+    List<FileUploadLogDto> findLogsByUser(User user);
+    List<FileUploadLogDto> findAllLogs();
+    void deleteLog(Long id);
 }

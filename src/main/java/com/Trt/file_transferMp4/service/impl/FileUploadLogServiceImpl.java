@@ -1,30 +1,52 @@
 package com.Trt.file_transferMp4.service.impl;
 
+import com.Trt.file_transferMp4.Dto.FileUploadLogDto;
 import com.Trt.file_transferMp4.Entity.FileUploadLog;
-import com.Trt.file_transferMp4.Entity.User;
 import com.Trt.file_transferMp4.repository.FileUploadLogRepository;
+import com.Trt.file_transferMp4.service.FileUploadLogService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-public class FileUploadLogServiceImpl implements com.Trt.file_transferMp4.service.FileUploadLog {
+public class FileUploadLogServiceImpl implements FileUploadLogService {
 
     @Autowired
     private FileUploadLogRepository fileUploadLogRepository;
 
-    public void saveLog(FileUploadLog log) {
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @Override
+    public void saveLog(FileUploadLogDto logDto) {
+        FileUploadLog log = modelMapper.map(logDto, FileUploadLog.class);
         fileUploadLogRepository.save(log);
     }
 
-    public List<FileUploadLog> findLogsByUser(User user) {
-        return null;
-        //return fileUploadLogRepository.findByUser(user);
+    @Override
+    public List<FileUploadLogDto> findLogsByUser(com.Trt.file_transferMp4.Entity.User user) {
+        List<FileUploadLog> logs = fileUploadLogRepository.findByUser(user);
+        return logs.stream()
+                .map(log -> modelMapper.map(log, FileUploadLogDto.class))
+                .collect(Collectors.toList());
     }
 
-    public List<FileUploadLog> findAllLogs() {
-        return fileUploadLogRepository.findAll();
+
+
+    @Override
+    public List<FileUploadLogDto> findAllLogs() {
+        List<FileUploadLog> logs = fileUploadLogRepository.findAll();
+        return logs.stream()
+                .map(log -> modelMapper.map(log, FileUploadLogDto.class))
+                .collect(Collectors.toList());    }
+
+    @Override
+    public void deleteLog(Long id) {
+        fileUploadLogRepository.deleteById(id);
     }
 
     // Diğer servis metodları
