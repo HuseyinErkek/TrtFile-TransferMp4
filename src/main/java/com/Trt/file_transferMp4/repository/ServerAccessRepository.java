@@ -12,5 +12,6 @@ import java.util.List;
 public interface ServerAccessRepository extends JpaRepository<ServerAccess, Long> {
     List<ServerAccess> findByUsername(String username);
     List<ServerAccess> findByUserId(Long userId);
+
 }
 

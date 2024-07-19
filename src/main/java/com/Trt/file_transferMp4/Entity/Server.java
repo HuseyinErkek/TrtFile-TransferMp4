@@ -24,7 +24,7 @@ public class Server implements Serializable {
     private Long id;
 
     @Column(nullable = false, unique = true,columnDefinition = "TEXT NOT NULL")
-    private String name;
+    private String serverName;
 
     @Column(nullable = false,unique = true,columnDefinition = "TEXT NOT NULL")
     private String address;

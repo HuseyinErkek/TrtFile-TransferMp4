@@ -6,6 +6,6 @@ import lombok.Data;
 public class ServerDto {
     private Long id;
 
-    private String name;
+    private String serverName;
 
 }
