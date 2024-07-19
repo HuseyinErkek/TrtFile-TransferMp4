@@ -5,8 +5,10 @@ import com.Trt.file_transferMp4.Dto.FileUploadLogDto;
 import com.Trt.file_transferMp4.Dto.ServerAccessDto;
 import com.Trt.file_transferMp4.Entity.Server;
 import com.Trt.file_transferMp4.Entity.User;
+import com.Trt.file_transferMp4.repository.UserRepository;
 import com.Trt.file_transferMp4.service.AccessRequestService;
 import com.Trt.file_transferMp4.service.ServerService;
+import com.Trt.file_transferMp4.service.UserService;
 import com.Trt.file_transferMp4.service.impl.FileUploadLogServiceImpl;
 import com.Trt.file_transferMp4.service.impl.ServerAccessServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,16 @@ public class AdminController {
 
     @Autowired
     private FileUploadLogServiceImpl fileUploadLogService;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private AccessRequestService accessRequestService;
+    @Autowired
+    private ServerAccessServiceImpl serverAccessService;
+    @Autowired
+    private ServerService serverService;
+    @Autowired
+    private UserService userService;
 
     // File logları görüntülemek için olan kısım
     @GetMapping("/logs")
@@ -47,18 +59,12 @@ public class AdminController {
         return ResponseEntity.noContent().build();
     }
 
-    @Autowired
-    AccessRequestService accessRequestService;
-
     // Erişim Taleplerini Listeleme
     @GetMapping("/access-requests")
     public ResponseEntity<List<AccesRequestDto>> getAllAccessRequests() {
         List<AccesRequestDto> accessRequestDtos = accessRequestService.getAllAccessRequests();
         return ResponseEntity.ok(accessRequestDtos);
     }
-
-    @Autowired
-    private ServerAccessServiceImpl serverAccessService;
 
     // Tüm sunucu erişim izinlerini listeleme
     @GetMapping("/server-accesses")
@@ -87,9 +93,6 @@ public class AdminController {
         serverAccessService.deleteServerAccessByUsername(username);
         return ResponseEntity.noContent().build();
     }
-
-    @Autowired
-    private ServerService serverService;
 
     // Tüm sunucuları listeleme
     @GetMapping("/servers")
@@ -121,5 +124,19 @@ public class AdminController {
     public ResponseEntity<Void> deleteServerByName(@PathVariable String serverName) {
         serverService.deleteServerByName(serverName);
         return ResponseEntity.noContent().build();
+    }
+
+    // Kullanıcıları görüntüleme
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
+    }
+
+    // Kullanıcıları isme göre görüntüleme
+    @GetMapping("/users/{username}")
+    public ResponseEntity<User> findByUsername(@PathVariable String username) {
+        User user = userRepository.findByUsername(username);
+        return ResponseEntity.ok(user);
     }
 }

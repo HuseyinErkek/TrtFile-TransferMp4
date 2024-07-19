@@ -7,23 +7,24 @@ import com.Trt.file_transferMp4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private RoleRepository roleRepository;
-
-    public void saveUser(User user) {
-        userRepository.save(user);
-    }
-
+    @Override
     public User findByUsername(String username) {
-        return null;
-        //return userRepository.findByUsername(username);
+        return userRepository.findByUsername(username);
     }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
 
     // Diğer servis metodları
 }

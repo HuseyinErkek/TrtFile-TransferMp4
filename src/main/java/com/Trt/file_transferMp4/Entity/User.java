@@ -41,14 +41,7 @@ public class User implements Serializable {
     @JoinColumn(name = "role_durumu")
     private List<Role> role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<FileUploadLog> fileUploadLogs;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<AccessRequest> accessRequests;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<ServerAccess> serverAccessList;
 
 
     }
