@@ -3,6 +3,7 @@ package com.Trt.file_transferMp4.service.impl;
 import com.Trt.file_transferMp4.Entity.User;
 import com.Trt.file_transferMp4.repository.UserRepository;
 import com.Trt.file_transferMp4.service.UserService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
+    @Transactional
     public User findByUsername(String username) {
         User user = userRepository.findByUsername(username);
         if (user == null) {
@@ -24,6 +26,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
