@@ -1,7 +1,6 @@
 package com.Trt.file_transferMp4.service.impl;
 
 import com.Trt.file_transferMp4.Entity.User;
-import com.Trt.file_transferMp4.repository.RoleRepository;
 import com.Trt.file_transferMp4.repository.UserRepository;
 import com.Trt.file_transferMp4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +16,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new IllegalArgumentException("Kullanıcı bulunamadı.");
+        }
+        return user;
     }
 
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-
-
-    // Diğer servis metodları
 }
-

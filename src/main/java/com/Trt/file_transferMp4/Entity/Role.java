@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-
 import java.io.Serializable;
-
 
 @Entity
 @Table(name = "rolee")
@@ -16,24 +13,17 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-    public class Role implements Serializable {
+public class Role implements Serializable {
 
     @Id
-    @SequenceGenerator(name ="role" )
+    @SequenceGenerator(name ="role", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "role", strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(nullable = false)
     private String rolename;
 
-
-    @ManyToOne
-    @JoinColumn(name= "role_durumu")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_durumu")
     private User user;
-
-
-
-
 }
-

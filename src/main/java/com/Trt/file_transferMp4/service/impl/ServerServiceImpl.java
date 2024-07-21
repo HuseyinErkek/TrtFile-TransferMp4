@@ -40,7 +40,9 @@ public class ServerServiceImpl implements ServerService {
     @Override
     @Transactional
     public void deleteServerByName(String serverName) {
+        if (serverRepository.findByServerName(serverName).isEmpty()) {
+            throw new IllegalArgumentException("Sunucu bulunamadı.");
+        }
         serverRepository.deleteByServerName(serverName);
-
     }
 }

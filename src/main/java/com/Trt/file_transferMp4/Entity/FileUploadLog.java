@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -17,12 +15,11 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class FileUploadLog implements Serializable {
+
     @Id
-    @SequenceGenerator(name="log",allocationSize=1,initialValue=1)
-    @GeneratedValue(generator ="log",strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name="log", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "log", strategy = GenerationType.SEQUENCE)
     private Long id;
-
-
 
     @Column(nullable = false)
     private String userName;
@@ -40,6 +37,8 @@ public class FileUploadLog implements Serializable {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-
-
+    @PrePersist
+    protected void onCreate() {
+        transferTime = LocalDateTime.now();
+    }
 }

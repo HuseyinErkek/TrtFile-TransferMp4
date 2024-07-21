@@ -1,7 +1,5 @@
 package com.Trt.file_transferMp4.Entity;
 
-
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,11 +17,11 @@ import java.time.LocalDateTime;
 public class AccessRequest implements Serializable {
 
     @Id
-    @SequenceGenerator(name ="erisim" ,allocationSize = 1,initialValue = 1)
+    @SequenceGenerator(name ="erisim", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "erisim", strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
     private String userName;
 
     @Column(nullable = false)
@@ -32,7 +30,7 @@ public class AccessRequest implements Serializable {
     @Column(nullable = false)
     private String unitTitle;
 
-    @Column(nullable = false,unique = true,columnDefinition = "TEXT NOT NULL")
+    @Column(nullable = false, columnDefinition = "TEXT NOT NULL")
     private String serverName;
 
     @Column
@@ -42,8 +40,8 @@ public class AccessRequest implements Serializable {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-
-
-
+    @PrePersist
+    protected void onCreate() {
+        requestTime = LocalDateTime.now();
+    }
 }
-

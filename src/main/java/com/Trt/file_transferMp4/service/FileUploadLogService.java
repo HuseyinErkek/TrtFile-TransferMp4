@@ -9,5 +9,5 @@ public interface FileUploadLogService {
     void saveLog(FileUploadLogDto logDto);
     List<FileUploadLogDto> findLogsByUser(User user);
     List<FileUploadLogDto> findAllLogs();
-    void deleteLog(Long id);
+    void deleteLogByUsername(String username);  // Güncellenmiş metod adı
 }

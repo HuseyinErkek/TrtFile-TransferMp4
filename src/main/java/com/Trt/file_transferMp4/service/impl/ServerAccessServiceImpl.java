@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ServerAccessServiceImpl  implements ServisAccessService {
+public class ServerAccessServiceImpl implements ServisAccessService {
 
     @Autowired
     private ServerAccessRepository serverAccessRepository;
@@ -21,7 +21,6 @@ public class ServerAccessServiceImpl  implements ServisAccessService {
     @Autowired
     private ModelMapper modelMapper;
 
-    //Tüm erisim izinlerini gösterir.
     @Override
     @Transactional
     public List<ServerAccessDto> getAllServerAccesses() {
@@ -30,7 +29,7 @@ public class ServerAccessServiceImpl  implements ServisAccessService {
                 .map(access -> modelMapper.map(access, ServerAccessDto.class))
                 .collect(Collectors.toList());
     }
-    //Kullanıcı adına gore tum erisimleri gosterir.
+
     @Override
     @Transactional
     public List<ServerAccessDto> getServerAccessesByUserId(String username) {
@@ -44,6 +43,9 @@ public class ServerAccessServiceImpl  implements ServisAccessService {
     @Transactional
     public void updateServerAccess(String username, boolean approved) {
         List<ServerAccess> accesses = serverAccessRepository.findByUsername(username);
+        if (accesses.isEmpty()) {
+            throw new IllegalArgumentException("Erişim bulunamadı.");
+        }
         for (ServerAccess access : accesses) {
             access.setApproved(approved);
             serverAccessRepository.save(access);
@@ -54,6 +56,9 @@ public class ServerAccessServiceImpl  implements ServisAccessService {
     @Transactional
     public void deleteServerAccessByUsername(String username) {
         List<ServerAccess> accesses = serverAccessRepository.findByUsername(username);
+        if (accesses.isEmpty()) {
+            throw new IllegalArgumentException("Erişim bulunamadı.");
+        }
         serverAccessRepository.deleteAll(accesses);
     }
 }

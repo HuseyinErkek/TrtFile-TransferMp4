@@ -1,7 +1,5 @@
 package com.Trt.file_transferMp4.Entity;
 
-
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,12 +18,10 @@ import java.util.List;
 @AllArgsConstructor
 public class User implements Serializable {
 
-
     @Id
-    @SequenceGenerator(name = "ad",allocationSize = 1,initialValue = 1)
-    @GeneratedValue(generator = "ad",strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "ad", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "ad", strategy = GenerationType.SEQUENCE)
     private Long id;
-
 
     @Column(unique = true, nullable = false)
     private String username;
@@ -36,13 +32,11 @@ public class User implements Serializable {
     @Column
     private LocalDateTime acces_time;
 
-
-    @OneToMany
-    @JoinColumn(name = "role_durumu")
-    private List<Role> role;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Role> roles;
 
 
-
-
+    public User(String username) {
+        this.username = username;
     }
-
+}

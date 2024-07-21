@@ -53,9 +53,9 @@ public class AdminController {
     }
 
     // Log silme
-    @DeleteMapping("/logs/{id}")
-    public ResponseEntity<Void> deleteLog(@PathVariable Long id) {
-        fileUploadLogService.deleteLog(id);
+    @DeleteMapping("/logs/{username}")
+    public ResponseEntity<Void> deleteLog(@PathVariable String username) {
+        fileUploadLogService.deleteLogByUsername(username);
         return ResponseEntity.noContent().build();
     }
 
