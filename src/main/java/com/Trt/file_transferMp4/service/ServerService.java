@@ -10,4 +10,5 @@ public interface ServerService {
     Optional<Server> getServerByName(String serverName);
     Server addServer(Server server);
     void deleteServerByName(String serverName);
+    Server findByServerName(String serverName);
 }

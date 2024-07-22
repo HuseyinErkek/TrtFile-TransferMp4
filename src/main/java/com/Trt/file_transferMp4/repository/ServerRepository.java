@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface ServerRepository extends JpaRepository<Server, Long> {
-    Optional<Server> findByServerName(String serverName);
+    //Server findByServerName(String serverName);
     void deleteByServerName(String serverName);
+
+    Optional<Server> findByServerName(String serverName);
 }
 

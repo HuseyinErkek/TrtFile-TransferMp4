@@ -45,4 +45,12 @@ public class ServerServiceImpl implements ServerService {
         }
         serverRepository.deleteByServerName(serverName);
     }
+
+    @Override
+    public Server findByServerName(String serverName) {
+        if (serverRepository.findByServerName(serverName).isEmpty()) {
+            throw new IllegalArgumentException("Sunucu bulunamadı.");
+        }
+        return serverRepository.findByServerName(serverName).get();
+    }
 }
