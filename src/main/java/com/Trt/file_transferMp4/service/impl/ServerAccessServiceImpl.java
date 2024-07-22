@@ -5,6 +5,7 @@ import com.Trt.file_transferMp4.Entity.ServerAccess;
 import com.Trt.file_transferMp4.repository.ServerAccessRepository;
 import com.Trt.file_transferMp4.service.ServisAccessService;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,13 +14,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ServerAccessServiceImpl implements ServisAccessService {
 
-    @Autowired
-    private ServerAccessRepository serverAccessRepository;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ServerAccessRepository serverAccessRepository;
+
+
+    private final ModelMapper modelMapper;
 
     @Override
     @Transactional
