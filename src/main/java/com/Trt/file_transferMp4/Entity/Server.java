@@ -25,4 +25,16 @@ public class Server implements Serializable {
 
     @Column(nullable = false, unique = true, columnDefinition = "TEXT NOT NULL")
     private String address;
+
+    @Column
+    private String ipAdress;
+
+    @Column
+    private int port;
+
+    @Column
+    private String serverUsername;
+
+    @Column
+    private String serverPassword;
 }

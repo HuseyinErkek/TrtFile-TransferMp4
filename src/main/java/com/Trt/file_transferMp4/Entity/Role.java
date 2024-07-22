@@ -23,7 +23,7 @@ public class Role implements Serializable {
     @Column(nullable = false)
     private String rolename;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name = "role_durumu")
     private User user;
 }
