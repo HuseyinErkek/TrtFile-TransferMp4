@@ -36,7 +36,5 @@ public class User implements Serializable {
     private List<Role> roles;
 
 
-    public User(String username) {
-        this.username = username;
-    }
+
 }
