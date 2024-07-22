@@ -22,7 +22,7 @@ public class SecurityConfig {
         return httpSecurity
                 .authorizeHttpRequests(registry ->{
 
-                    registry.requestMatchers("home").permitAll();
+                    registry.requestMatchers("login","registry").permitAll();
                     registry.requestMatchers("/admin/**").hasRole("ADMIN");
                     registry.requestMatchers("/user/**").hasRole("USER");
                     registry.anyRequest().authenticated();
@@ -32,21 +32,13 @@ public class SecurityConfig {
                     ;})
                 .build();
     }
-    //Kullanci kimlikleriyla olusturma ve hafizaya kaydetme.
-    @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails normalUser= User.builder()
-                .username("Melisa")
-                .password("$2a$12$0kDo4pV3rOkdlsa3q0YXK.rI1VEB.Fp3BKuoS/6lvrjh0Whx2sVZO")
-                .roles("USER")
-                .build();
-        UserDetails adminUser= User.builder()
-                .username("Huso")
-                .password("$2a$12$6JewjtvKMD1snYQHJafP0u2wCYjxJjkKrTE52QmmH.hJw.vrpnhAa")
-                .roles("ADMIN","USER")
-                .build();
-        return new InMemoryUserDetailsManager(normalUser,adminUser);
-    }
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web
+//                .ignoring()
+//                .antMatchers("/resources/**"); // Statik kaynaklara izin verme
+//    }
+
     //Girilen sifreyi encode edip normal hale getirme kismi.
     @Bean
     public PasswordEncoder passwordEncoder() {
