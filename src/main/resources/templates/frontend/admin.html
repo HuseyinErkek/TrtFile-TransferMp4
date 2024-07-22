@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="img/trt.png">
     <link rel="stylesheet" href="style.css">
+    <script src="admin.js" defer></script>
     <title>TRT</title>
 </head>
 <body>
@@ -16,12 +17,46 @@
     </div>
     <nav class="menu">
         <ul>
-            <li><a href="#">İşlem Geçmişi</a></li>
-            <li><a href="kayitistek.html">Kayıt İstek</a></li>
-            <li><a href="#">Çıkış<img src="img/power-off.png" alt="Logo" class="logout-logo"></a></li></ul>
+            <li><a href="#logs">Loglar</a></li>
+            <li><a href="#access-requests">Erişim Talepleri</a></li>
+            <li><a href="#server-accesses">Sunucu Erişim İzinleri</a></li>
+            <li><a href="#servers">Sunucular</a></li>
+            <li><a href="#users">Kullanıcılar</a></li>
+        </ul>
     </nav>
 
 </header>
+<main>
+    <section id="logs">
+        <h2>File Logları</h2>
+        <button onclick="fetchAllLogs()">Tüm Logları Getir</button>
+        <div id="logs-content"></div>
+    </section>
+
+    <section id="access-requests">
+        <h2>Erişim Talepleri</h2>
+        <button onclick="fetchAllAccessRequests()">Tüm Talepleri Getir</button>
+        <div id="access-requests-content"></div>
+    </section>
+
+    <section id="server-accesses">
+        <h2>Sunucu Erişim İzinleri</h2>
+        <button onclick="fetchAllServerAccesses()">Tüm İzinleri Getir</button>
+        <div id="server-accesses-content"></div>
+    </section>
+
+    <section id="servers">
+        <h2>Sunucular</h2>
+        <button onclick="fetchAllServers()">Tüm Sunucuları Getir</button>
+        <div id="servers-content"></div>
+    </section>
+
+    <section id="users">
+        <h2>Kullanıcılar</h2>
+        <button onclick="fetchAllUsers()">Tüm Kullanıcıları Getir</button>
+        <div id="users-content"></div>
+    </section>
+</main>
 <div class="footer">
     <p>İletişim: 1234567890 | Email: info@trt.com</p>
 </div>
