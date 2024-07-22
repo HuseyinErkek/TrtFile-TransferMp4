@@ -1,55 +1,41 @@
 package com.Trt.file_transferMp4.Controller;
 
-
-import ch.qos.logback.core.model.Model;
-import com.Trt.file_transferMp4.Entity.FileUploadLog;
-import com.Trt.file_transferMp4.Entity.User;
-import com.Trt.file_transferMp4.service.impl.FileUploadLogServiceImpl;
-import com.Trt.file_transferMp4.service.impl.UserServiceImpl;
+import com.Trt.file_transferMp4.service.FtpService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.io.IOException;
-import java.security.Principal;
 
 @Controller
-    public class FileUploadController {
+@RequestMapping("/user")
+public class FileUploadController {
 
-        @Autowired
-        private FileUploadLogServiceImpl fileUploadLogService;
+    @Autowired
+    private FtpService ftpService;
 
-        @Autowired
-        private UserServiceImpl userService;
+    @PostMapping
+    public ResponseEntity<?> uploadFile(@RequestParam("username") String username,
+                                        @RequestParam("folder") String serverName,
+                                        @RequestParam("file") MultipartFile file) {
+        try {
+            // Dosya adı ve yolunu belirle
+            String fileName = file.getOriginalFilename();
+            String filePath = serverName + "/" + fileName;
 
-        @GetMapping("/upload")
-        public String listUploadedFiles(Model model) throws IOException {
-            return "uploadForm";
+            // Dosyayı yükle
+            byte[] fileBytes = file.getBytes();
+            boolean result = ftpService.sendFile(fileBytes, filePath, username);
+
+            if (result) {
+                return ResponseEntity.ok().body("{\"success\": true}");
+            } else {
+                return ResponseEntity.status(500).body("{\"success\": false}");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("{\"success\": false, \"error\": \"" + e.getMessage() + "\"}");
         }
-
-//        @PostMapping("/upload")
-//        public String handleFileUpload(@RequestParam("file") MultipartFile file,
-//                                       RedirectAttributes redirectAttributes,
-//                                       Principal principal) {
-//            String username = principal.getName();
-//            User user = userService.findByUsername(username);
-//
-//            // Dosya yükleme işlemini gerçekleştir
-//            FileUploadLog log = new FileUploadLog();
-//            log.setFileName(file.getOriginalFilename());
-//            //log.setUploadTime(LocalDateTime.now());
-//            //log.setUser(user);
-//
-//            fileUploadLogService.saveLog(log);
-//
-//            redirectAttributes.addFlashAttribute("message",
-//                    "You successfully uploaded " + file.getOriginalFilename() + "!");
-//
-//            return "redirect:/upload";
-//        }
     }
-
+}

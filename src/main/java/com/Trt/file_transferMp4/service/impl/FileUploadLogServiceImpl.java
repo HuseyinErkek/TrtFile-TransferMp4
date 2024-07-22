@@ -7,21 +7,25 @@ import com.Trt.file_transferMp4.repository.FileUploadLogRepository;
 import com.Trt.file_transferMp4.repository.UserRepository;
 import com.Trt.file_transferMp4.service.FileUploadLogService;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class FileUploadLogServiceImpl implements FileUploadLogService {
 
-    @Autowired
-    private FileUploadLogRepository fileUploadLogRepository;
+    private final FileUploadLogRepository fileUploadLogRepository;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Override
     public void saveLog(FileUploadLogDto logDto) {
@@ -45,8 +49,8 @@ public class FileUploadLogServiceImpl implements FileUploadLogService {
                 .collect(Collectors.toList());
     }
 
-    @Autowired
-    private UserRepository userRepository;
+
+    private final UserRepository userRepository;
 
     @Override
     @Transactional
@@ -66,5 +70,7 @@ public class FileUploadLogServiceImpl implements FileUploadLogService {
         // Kullanıcıya ait tüm logları silme
         fileUploadLogRepository.deleteAll(logs);
     }
+
+
 
 }
