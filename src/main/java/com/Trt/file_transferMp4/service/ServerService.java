@@ -7,8 +7,11 @@ import java.util.Optional;
 
 public interface ServerService {
     List<Server> getAllServers();
-    Optional<Server> getServerByName(String serverName);
+    //Optional<Server> getServerByName(String serverName);
     Server addServer(Server server);
     void deleteServerByName(String serverName);
     Server findByServerName(String serverName);
+    //String getAdressByserverName(String serverName);
+
+
 }

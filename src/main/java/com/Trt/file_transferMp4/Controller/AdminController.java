@@ -102,11 +102,11 @@ public class AdminController {
     }
 
     // Sunucuyu isme göre getirme
-    @GetMapping("/servers/{serverName}")
-    public ResponseEntity<Server> getServerByName(@PathVariable String serverName) {
-        Optional<Server> server = serverService.getServerByName(serverName);
-        return server.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
+//    @GetMapping("/servers/{serverName}")
+//    public ResponseEntity<Server> getServerByName(@PathVariable String serverName) {
+//        Optional<Server> server = serverService.getServerByName(serverName);
+//        return server.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+//    }
 
     // Sunucu ekleme
     @PostMapping("/servers")

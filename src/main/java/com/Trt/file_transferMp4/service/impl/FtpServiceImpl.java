@@ -25,6 +25,17 @@ public class FtpServiceImpl implements FtpService {
     private final FileUploadLogService fileUploadLogService;
     private final ServerRepository serverRepository;
 
+
+    public String getAddressByFolder(String folder) {
+        // Bu örnekte folder, sunucu adı olarak kabul ediliyor.
+        Optional<Server> optionalServer = serverRepository.findByServerName(folder);
+        if (optionalServer.isPresent()) {
+            return optionalServer.get().getAddress();
+        } else {
+            throw new IllegalArgumentException("Sunucu bulunamadı.");
+        }
+    }
+
     @Override
     public Boolean sendFile(byte[] file, String filePath, String username) {
         FTPClient ftpClient = new FTPClient();
@@ -39,11 +50,12 @@ public class FtpServiceImpl implements FtpService {
             int port = server.getPort();
             String serverPassword = server.getServerPassword();
             String serverUsername = server.getServerUsername();
+            String serverAddress = server.getAddress();
 
             // FTP bağlantısını kur
             ftpClient.connect(ipAddress, port);
             ftpClient.login(serverUsername, serverPassword);
-            boolean done = ftpClient.storeFile(filePath, targetStream);
+            boolean done = ftpClient.storeFile(serverAddress, targetStream);
 
             if (done) {
                 // Dosya yükleme başarılıysa log oluştur
@@ -69,5 +81,7 @@ public class FtpServiceImpl implements FtpService {
                 logger.error("Failed to disconnect FTP client: {}", ex.getMessage(), ex);
             }
         }
+
     }
+
 }

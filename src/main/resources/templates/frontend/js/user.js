@@ -1,4 +1,18 @@
-// Fonksiyon dosyayı yükleyecek ve gönderme işlemi yapacak
+function getServerAddress(folder) {
+    return new Promise((resolve, reject) => {
+        fetch(`/getServerAddressByFolder?folder=${folder}`)
+            .then(response => {
+                if (response.ok) {
+                    return response.text(); // veya response.json() kullanabilirsiniz
+                } else {
+                    throw new Error('Sunucu adresi alınamadı.');
+                }
+            })
+            .then(address => resolve(address))
+            .catch(error => reject(error));
+    });
+}
+
 function sendFile() {
     // Form elemanlarından verileri al
     const folder = document.getElementById('folder').value;
@@ -6,17 +20,27 @@ function sendFile() {
     const file = fileInput.files[0];
     const username = document.getElementById('usernameDisplay').textContent; // Kullanıcı adını buradan al
 
-    // FormData nesnesini oluştur
-    const formData = new FormData();
-    formData.append('username', username); // Kullanıcı adını ekle
-    formData.append('folder', folder); // Seçilen klasörü ekle
-    formData.append('file', file); // Dosyayı ekle
+    // Sunucu adresini al
+    getServerAddress(folder)
+        .then(filePath => {
+            if (!filePath) {
+                alert('Sunucu adresi alınamadı.');
+                return;
+            }
 
-    // Fetch API ile dosya yükleme işlemi
-    fetch('/upload', {
-        method: 'POST',
-        body: formData
-    })
+            // FormData nesnesini oluştur
+            const formData = new FormData();
+            formData.append('username', username); // Kullanıcı adını ekle
+            formData.append('folder', folder); // Gönderilecek klasörü ekle
+            formData.append('file', file); // Dosyayı ekle
+            formData.append('filePath', filePath); // Sunucu adresini ekle
+
+            // Fetch API ile dosya yükleme işlemi
+            return fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+        })
         .then(response => response.json())
         .then(data => {
             // Başarıyla yüklenirse kullanıcıya mesaj göster

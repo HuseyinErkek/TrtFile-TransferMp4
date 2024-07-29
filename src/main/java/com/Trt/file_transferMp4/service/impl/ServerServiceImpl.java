@@ -22,11 +22,11 @@ public class ServerServiceImpl implements ServerService {
         return serverRepository.findAll();
     }
 
-    @Override
-    @Transactional
-    public Optional<Server> getServerByName(String serverName) {
-        return serverRepository.findByServerName(serverName);
-    }
+//    @Override
+//    @Transactional
+//    public Optional<Server> getServerByName(String serverName) {
+//        return serverRepository.findByServerName(serverName);
+//    }
 
     @Override
     @Transactional
@@ -53,4 +53,13 @@ public class ServerServiceImpl implements ServerService {
         }
         return serverRepository.findByServerName(serverName).get();
     }
+
+
+    //    @Override
+//    public Server getServerByServerName(String serverName) {
+//        if (serverRepository.findByServerName(serverName).isEmpty()) {
+//            throw new IllegalArgumentException("Sunucu bulunamadı.");
+//        }
+//        return serverRepository.findByServerName(serverName).get();
+//    }
 }
